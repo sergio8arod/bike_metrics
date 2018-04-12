@@ -50,7 +50,23 @@ class Welcome extends CI_Controller {
                         $this->session->set_userdata('client_id',$user->client_id);
                         $this->session->set_userdata('user_id',$user->id);
                         $data['role'] = $user->role;
-                        $data['message'] = "good";
+                        $data['message'] = "good";                        
+
+                        //email login
+                        $this->load->library('email');
+
+                        $this->email->from('contacto@mejorenbici.com', 'Mejor en Bici');
+                        $this->email->to('sergiorodriguez@mejorenbici.com');
+                        //$this->email->cc('another@another-example.com');
+                        //$this->email->bcc('them@their-example.com');
+
+                        $this->email->subject('Email Test');
+                        $this->email->message('Testing the email class.');
+
+                        if ( ! $this->email->send(FALSE))
+                        {
+                            $data['message'] = $this->email->print_debugger(array('headers'));
+                        }
                     } else {
                         $data['message'] = "bad";
                     }
