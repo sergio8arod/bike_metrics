@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
       <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #00854A; margin-bottom: 10px;">
           <a class="navbar-brand" href="<?php echo site_url('add/index'); ?>">
-            <img src="<?php echo base_url('images/logo_white.png');?>" height="50" class="d-inline-block align-center" alt="">
+            <img src="<?php echo base_url('images/logo_white.PNG');?>" height="50" class="d-inline-block align-center" alt="">
           </a>
           <!-- <div class="container-fluid"> -->
               <!-- Brand and toggle get grouped for better mobile display -->

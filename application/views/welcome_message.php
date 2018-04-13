@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <body>
     <nav class="navbar navbar-light bg-faded" style="background-color: #ededed; border-bottom: 5px solid #50B848; margin-bottom: 10px;">
         <a class="navbar-brand" href="#">
-            <img src="<?php echo base_url('images/logo.png');?>" height="50" class="d-inline-block align-center" alt="">
+            <img src="<?php echo base_url('images/logo.PNG');?>" height="50" class="d-inline-block align-center" alt="">
             Métricas bicis particulares
         </a>
     </nav>
