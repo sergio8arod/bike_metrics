@@ -6,11 +6,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 $config['useragent'] = 'CodeIgniter';
-$config['smtp_host'] = 'email-smtp.us-east-1.amazonaws.com';
-$config['smtp_port'] = '2587';
-$config['smtp_user'] = 'AKIAJRRKG3ASZNH3TT2Q';
-$config['smtp_pass'] = 'AiAaazQChpzowXcAocvLczVw823MQBFJHUYZ24er2cMG';
-$config['smtp_crypto'] = 'tls';
+$config['smtp_host'] = 'smtp.gmail.com';
+$config['smtp_port'] = '465';
+$config['smtp_user'] = 'sibucsys@mejorenbici.com';
+$config['smtp_pass'] = 'SIBUCmEb.4034';
+$config['smtp_crypto'] = 'ssl';
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';
 $config['protocol'] = 'smtp';
