@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+include_once(APPPATH.'core/MY_CONTROLLER.php');
 
 class Register extends CI_Controller {
     public function index() {
