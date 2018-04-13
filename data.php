@@ -2,7 +2,7 @@
 if(isset($_POST[0]['host'])){
 $server="localhost";
 $username="bikem";
-$password="bikeMetrics";
+$password="L5Hm*nb!sX%g9#9Q";
 $databaseName="bike_metrics";
 $db=new mysqli($server,$username,$password,$databaseName);
 if ($db->connect_error) {
