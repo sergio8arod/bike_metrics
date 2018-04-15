@@ -25,6 +25,7 @@ $( document ).ready(function() {
             registerViewModel.inputDistance(getDistanceFromLatLonInKm(registerViewModel.inputClientLat(),registerViewModel.inputClientLng(),marker.getPosition().lat(),marker.getPosition().lng()));
             console.log(registerViewModel.inputDistance());
             $.getJSON('//api.ipify.org/?format=json', function(clientInfo) {
+                console.log(clientInfo);
                 registerViewModel.ipTerms(clientInfo.ip);
             });
             //Convert model to JSON
