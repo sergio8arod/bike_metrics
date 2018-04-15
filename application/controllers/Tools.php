@@ -48,6 +48,7 @@ class Tools extends CI_Controller {
                 . 'terms VARCHAR(500) NOT NULL,'
                 . 'lat DECIMAL NOT NULL,'
                 . 'lng DECIMAL NOT NULL,'
+                . 'EPC VARCHAR (24) NOT NULL,'
                 . 'PRIMARY KEY(id)'
                 . ');';
         $success = $this->db->query($sql);

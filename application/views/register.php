@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="inputVinculation">Cargo/Vinculación</label>
+                    <label for="inputVinculation">Vicepresidencia/Vinculación</label>
                     <select data-bind="value: inputVinculation" class="form-control" id="inputVinculation" style="height: 40px">
                         <option value="" selected disabled>- Selecciona tu cargo/vinculación -</option>
                         <?php if(isset($vinculations)):?>

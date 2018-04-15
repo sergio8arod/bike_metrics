@@ -5,11 +5,11 @@
         <form data-bind="submit:filterChart" class="form-inline">
             <div class="form-group">
                 <label for="from">From</label>
-                <input data-bind="value:from" type="input" class="form-control" id="from" placeholder="YYYY-MM-DD">
+                <input data-bind="value:from" type="date" class="form-control" id="from">
             </div>
             <div class="form-group">
                 <label for="to">To</label>
-                <input data-bind="value:to" type="input" class="form-control" id="to" placeholder="YYYY-MM-DD">
+                <input data-bind="value:to" type="date" class="form-control" id="to">
             </div>
             <button type="submit" class="btn btn-default">Filtrar</button>
         </form>
