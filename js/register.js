@@ -24,10 +24,15 @@ $( document ).ready(function() {
         saveNewUser: function(){
             registerViewModel.inputDistance(getDistanceFromLatLonInKm(registerViewModel.inputClientLat(),registerViewModel.inputClientLng(),marker.getPosition().lat(),marker.getPosition().lng()));
             console.log(registerViewModel.inputDistance());
-            $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(clientInfo) {
-                registerViewModel.ipTerms(clientInfo.ip);                
-                console.log(registerViewModel.ipTerms());
-                
+            
+            $.ajax({
+                url: 'https://api.ipify.org?format=jsonp&callback=?',
+                dataType: 'json',
+                async: false,
+                success: function(clientInfo) {
+                    registerViewModel.ipTerms(clientInfo.ip);                
+                    console.log(registerViewModel.ipTerms());
+                }
             });            
             //Convert model to JSON
             var data = ko.toJSON(this);
