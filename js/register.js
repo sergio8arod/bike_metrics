@@ -18,7 +18,7 @@ $( document ).ready(function() {
         inputClientLat: ko.observable(''),
         inputClientLng: ko.observable(''),
         inputDistance: ko.observable(''),
-        ipTerms: ko.observable(),
+        ipTerms: ko.observable(''),
         inputTerms: ko.observable(''),
         shouldShowAlert: ko.observable(false),
         saveNewUser: function(){
@@ -26,12 +26,16 @@ $( document ).ready(function() {
             console.log(registerViewModel.inputDistance());
             $.getJSON('//api.ipify.org/?format=json', function(clientInfo) {
                 registerViewModel.ipTerms(clientInfo.ip);
-                console.log(clientInfo);
-                console.log(clientInfo.ip);
             });
-            //Convert model to JSON
-            var data = ko.toJSON(this);
-            console.log(data);
+            console.log(registerViewModel.ipTerms());
+            while(registerViewModel.ipTerms()=='')
+            {
+                console.log(registerViewModel.ipTerms());
+                //Convert model to JSON
+                var data = ko.toJSON(this);
+                console.log(data);
+            }
+            console.log(registerViewModel.ipTerms());
             //POST the data using AJAX
             $.post(site_url('register/save'),data,function(message){
                 console.log(message);
