@@ -26,16 +26,13 @@ $( document ).ready(function() {
             console.log(registerViewModel.inputDistance());
             $.getJSON('//api.ipify.org/?format=json', function(clientInfo) {
                 registerViewModel.ipTerms(clientInfo.ip);
-            });
-            console.log(registerViewModel.ipTerms());
-            while(registerViewModel.ipTerms()=='')
-            {
+                
                 console.log(registerViewModel.ipTerms());
                 //Convert model to JSON
                 var data = ko.toJSON(this);
                 console.log(data);
-            }
-            console.log(registerViewModel.ipTerms());
+            });            
+            console.log(data);
             //POST the data using AJAX
             $.post(site_url('register/save'),data,function(message){
                 console.log(message);
