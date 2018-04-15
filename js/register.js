@@ -25,29 +25,26 @@ $( document ).ready(function() {
             registerViewModel.inputDistance(getDistanceFromLatLonInKm(registerViewModel.inputClientLat(),registerViewModel.inputClientLng(),marker.getPosition().lat(),marker.getPosition().lng()));
             console.log(registerViewModel.inputDistance());
             
-            $.ajaxSetup({
-                async: false
-            });
             $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(clientInfo) {
                 registerViewModel.ipTerms(clientInfo.ip);                
                 console.log(registerViewModel.ipTerms());
-            });
-            
-            //Convert model to JSON
-            var data = ko.toJSON(this);
-            console.log(data);
-            //POST the data using AJAX
-            $.post(site_url('register/save'),data,function(message){
-                console.log(message);
-                if(message=='Success'){
-                    //Redirect to welcome/index controller
-                    url = site_url('welcome/index');
-                    window.location.replace(url);
-                } else {
-                    var divError = document.getElementById('errorMessage');
-                    divError.innerHTML = message;
-                    registerViewModel.shouldShowAlert(true);
-                }
+                
+                //Convert model to JSON
+                var data = ko.toJSON(this);
+                console.log(data);
+                //POST the data using AJAX
+                $.post(site_url('register/save'),data,function(message){
+                    console.log(message);
+                    if(message=='Success'){
+                        //Redirect to welcome/index controller
+                        url = site_url('welcome/index');
+                        window.location.replace(url);
+                    } else {
+                        var divError = document.getElementById('errorMessage');
+                        divError.innerHTML = message;
+                        registerViewModel.shouldShowAlert(true);
+                    }
+                });
             });
         },
         clientDefined : function() {
