@@ -12,7 +12,7 @@ $( document ).ready(function() {
         inputClientID: ko.observable(''),
         inputVinculation: ko.observable(''),
         divFaculty: ko.observable(false),
-        inputFaculty: ko.observable(''),
+        inputFaculty: ko.observable('0'),
         inputMantFrec: ko.observable(''),
         inputDrBici: ko.observable(''),
         inputClientLat: ko.observable(''),
