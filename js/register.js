@@ -26,6 +26,8 @@ $( document ).ready(function() {
             console.log(registerViewModel.inputDistance());
             $.getJSON('//api.ipify.org/?format=json', function(clientInfo) {
                 registerViewModel.ipTerms(clientInfo.ip);
+                console.log(clientInfo);
+                console.log(clientInfo.ip);
             });
             //Convert model to JSON
             var data = ko.toJSON(this);
