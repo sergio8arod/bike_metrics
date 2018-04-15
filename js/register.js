@@ -30,7 +30,7 @@ $( document ).ready(function() {
                 console.log(registerViewModel.ipTerms());
                 
                 //Convert model to JSON
-                var data = ko.toJSON(this);
+                var data = ko.toJSON(registerViewModel);
                 console.log(data);
                 //POST the data using AJAX
                 $.post(site_url('register/save'),data,function(message){
