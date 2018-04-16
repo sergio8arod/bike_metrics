@@ -21,7 +21,10 @@ $( document ).ready(function() {
         divMap: ko.observable(false),
         shouldShowAlert: ko.observable(false),
         saveUser: function(){
-            //userViewModel.inputDistance(getDistanceFromLatLonInKm(userViewModel.inputClientLat(),userViewModel.inputClientLng(),marker.getPosition().lat(),marker.getPosition().lng()));
+            if(userViewModel.inputDistance()=='')
+            {
+                userViewModel.inputDistance(getDistanceFromLatLonInKm(userViewModel.inputClientLat(),userViewModel.inputClientLng(),marker.getPosition().lat(),marker.getPosition().lng()));
+            }
             console.log(userViewModel.inputDistance());
             
             //Convert model to JSON
@@ -46,7 +49,7 @@ $( document ).ready(function() {
             initMap();
             var Clientlatlng = {lat: userViewModel.inputClientLat(), lng: userViewModel.inputClientLng()};
             recenterMap(Clientlatlng);
-            
+            userViewModel.inputDistance('');
         }
     };
     //Activate Knockout
@@ -55,6 +58,22 @@ $( document ).ready(function() {
     data=0;
     $.post(site_url('userModify/fetch'),data,function(response){
         console.log(response);
+        if(response.message==='university'){
+            loadlist(inputVinculation,response.vinculations,"id","name");
+            userViewModel.divFaculty(true);
+            loadlist(inputFaculty,response.faculties,"id","name");
+            userViewModel.inputClientLat(Number(response.lat));
+            userViewModel.inputClientLng(Number(response.lng));
+        }else if(response.message==='company'){
+            loadlist(inputVinculation,response.vinculations,"id","name");
+            userViewModel.divFaculty(false);               
+            userViewModel.inputClientLat(Number(response.lat));
+            userViewModel.inputClientLng(Number(response.lng));
+        }else{
+            userViewModel.divFaculty(false);
+            //alert('El cliente seleccionado es invalido');
+        }
+        
         user = response.user;
         userViewModel.inputEmail(user.email);
         userViewModel.inputName(user.full_name);
@@ -71,22 +90,6 @@ $( document ).ready(function() {
         userViewModel.inputClientLat(response.lat);
         userViewModel.inputClientLng(response.lng);
         userViewModel.inputDistance(user.d_home);
-        
-        if(response.message==='university'){
-            loadlist(inputVinculation,response.vinculations,"id","name");
-            userViewModel.divFaculty(true);
-            loadlist(inputFaculty,response.faculties,"id","name");
-            userViewModel.inputClientLat(Number(response.lat));
-            userViewModel.inputClientLng(Number(response.lng));
-        }else if(response.message==='company'){
-            loadlist(inputVinculation,response.vinculations,"id","name");
-            userViewModel.divFaculty(false);               
-            userViewModel.inputClientLat(Number(response.lat));
-            userViewModel.inputClientLng(Number(response.lng));
-        }else{
-            userViewModel.divFaculty(false);
-            //alert('El cliente seleccionado es invalido');
-        }
     });
     
 });

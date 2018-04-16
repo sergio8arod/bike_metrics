@@ -170,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input data-bind="textInput: inputClientLng" type="hidden">
             </div>
             <div id="errorMessage" data-bind="visible: shouldShowAlert" class="alert alert-danger" style="display:none;" role="alert">Alguno de los datos no es valido</div>
-            <button type="submit" class="btn btn-primary">Registrarme</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </div>
 

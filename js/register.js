@@ -26,12 +26,10 @@ $( document ).ready(function() {
             console.log(registerViewModel.inputDistance());
             
             $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(clientInfo) {
-                registerViewModel.ipTerms(clientInfo.ip);                
-                console.log(registerViewModel.ipTerms());
+                registerViewModel.ipTerms(clientInfo.ip);
                 
                 //Convert model to JSON
                 var data = ko.toJSON(registerViewModel);
-                console.log(data);
                 //POST the data using AJAX
                 $.post(site_url('register/save'),data,function(message){
                     console.log(message);
@@ -50,7 +48,7 @@ $( document ).ready(function() {
         clientDefined : function() {
             var data = ko.toJSON(registerViewModel.inputClientID());
             $.post(site_url('register/fetch'),data,function(response){
-                console.log(response);
+                //console.log(response);
                 if(response.message==='university'){
                     loadlist(inputVinculation,response.vinculations,"id","name");
                     registerViewModel.divFaculty(true);
@@ -152,7 +150,7 @@ function loadlist(selobj,data,idattr,nameattr)
     $(selobj).empty();
     //append the values
     $(selobj).append('<option value="" selected disabled>- Selecciona tu cargo/vinculación -</option>')
-    console.log(data);
+    //console.log(data);
     $.each(data, function(i,obj)
     {
         $(selobj).append(

@@ -53,7 +53,7 @@ class Welcome extends CI_Controller {
                         $data['role'] = $user->role;
                         $data['message'] = "good";                        
 
-                        //email login
+                       /* //email login
                         $this->load->library('email');
 
                         $this->email->from('contacto@mejorenbici.com', 'Mejor en Bici');
@@ -67,7 +67,7 @@ class Welcome extends CI_Controller {
                         if ( ! $this->email->send(FALSE))
                         {
                             $data['message'] = $this->email->print_debugger(array('headers'));
-                        }
+                        }*/
                     } else {
                         $data['message'] = "bad";
                     }

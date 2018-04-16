@@ -25,12 +25,9 @@ class UserModify extends CI_Controller {
             
             $data = array();
             
-            $user = $this->_getUser($this->session->userdata('user_id'));
-            $data['user'] = $user;
-            
             $vinculations = $this->_getVinculations($this->session->userdata('client_id'));
             $data['vinculations'] = $vinculations;
-                
+            
             $client = $this->_getClient($this->session->userdata('client_id'));
             $data['lat'] =$client->lat;
             $data['lng'] =$client->lng;
@@ -41,6 +38,9 @@ class UserModify extends CI_Controller {
             }else{
                 $data['message'] = "company";
             }
+            
+            $user = $this->_getUser($this->session->userdata('user_id'));
+            $data['user'] = $user;
             
             $this->output
                     ->set_content_type('application/json')
@@ -76,13 +76,13 @@ class UserModify extends CI_Controller {
                     'address' => $post->inputAddress,
                     'cellphone' => $post->inputCellphone,
                     'vinculation' => $post->inputVinculation,
-                    'faculty' => $post->inputFacultad,
-                    'ipTerms' => $post->ipTerms
+                    'faculty' => $post->inputFaculty,
+                    //'ipTerms' => $post->ipTerms
                 );
                 //Load database
                 $this->load->database();
-                $inserted = $this->db->insert('users',$data);
-                if($inserted) {
+                $updated = $this->db->update('users',$data,array('id'=>$this->session->userdata('user_id')));
+                if($updated) {
                     $message = 'Success';
                 } else {
                     $message = 'Database problem';
@@ -129,7 +129,7 @@ class UserModify extends CI_Controller {
             $valid="Ingresa un email valido";
         }
         
-        $user = $this->db->get_where('users',array('email' => $post->inputEmail))->row();
+        /*$user = $this->db->get_where('users',array('email' => $post->inputEmail))->row();
         if(!empty($user)){
             $valid = "El email ingresado ya existe.";
         }
@@ -137,10 +137,10 @@ class UserModify extends CI_Controller {
         $user = $this->db->get_where('users',array('identification' => $post->inputIdentification))->row();
         if(!empty($user)){
             $valid = "La identificación ingresada ya existe.";
-        }        
+        }*/        
         
         if($post->inputDistance<=0){
-            $valid = "Debes arrastar el marcador (punto rojo en el mapa) a tu lugar de residencia.";
+            $valid = "Ya que cambiaste tu dirección de residencia, debes arrastar el marcador (punto rojo en el mapa) a tu lugar de residencia.";
         }
         return $valid;
     }

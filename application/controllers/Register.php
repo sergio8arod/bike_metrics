@@ -1,4 +1,6 @@
 <?php
+error_reporting(-1);
+ini_set('display_errors', '1');
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -80,7 +82,7 @@ class Register extends CI_Controller {
                     'address' => $post->inputAddress,
                     'cellphone' => $post->inputCellphone,
                     'vinculation' => $post->inputVinculation,
-                    'faculty' => $post->inputFacultad,
+                    'faculty' => $post->inputFaculty,
                     'ipTerms' => $post->ipTerms
                 );
                 //Load database
