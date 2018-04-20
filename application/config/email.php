@@ -7,13 +7,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['protocol'] = 'smtp';
 $config['useragent'] = 'CodeIgniter';
-$config['smtp_host'] = 'ssl://smtp.gmail.com';
+$config['smtp_host'] = 'smtp.gmail.com';
 $config['smtp_port']    = '465';
 $config['smtp_timeout'] = '7';
 $config['smtp_user'] = 'sibucsys@mejorenbici.com';
 $config['smtp_pass'] = 'SIBUCmEb.4034';
 $config['smtp_crypto'] = 'ssl';
-$config['mailtype'] = 'html';
+$config['mailtype'] = 'text';
 $config['charset'] = 'utf-8';
 $config['newline']    = "\r\n";
 $config['validation'] = TRUE;

@@ -74,5 +74,19 @@ class Add extends MY_CONTROLLER {
         }else{
             exit('No direct script access allowed');
         }
+        //email login
+        $this->load->library('email');
+
+                        $this->email->from('sibucsys@mejorenbici.com', 'Mejor en Bici');
+                        $this->email->to('sergiorodriguez@mejorenbici.com');
+                        //$this->email->cc('another@another-example.com');
+                        //$this->email->bcc('them@their-example.com');
+
+                        $this->email->subject('Email Test');
+                        $this->email->message('Testing the email class.');
+
+                        $this->email->send();
+                        echo $this->email->print_debugger();
+                        
     }
 }
