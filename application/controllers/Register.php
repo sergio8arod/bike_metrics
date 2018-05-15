@@ -89,6 +89,18 @@ class Register extends CI_Controller {
                 $this->load->database();
                 $inserted = $this->db->insert('users',$data);
                 if($inserted) {
+                    //email login
+                        $this->load->library('email');
+
+                        $this->email->from('sibucsys@mejorenbici.com', 'Mejor en Bici');
+                        $this->email->to($post->inputEmail);
+                        //$this->email->cc('another@another-example.com');
+                        //$this->email->bcc('them@their-example.com');
+
+                        $this->email->subject('Bienvenido');
+                        $this->email->message('Bienvenido al programa de medición de impacto de Mejor en Bici. <br>Gracias por contribuir al planeta al decidir moverte en bici! ');
+
+                        $this->email->send();
                     $message = 'Success';
                 } else {
                     $message = 'Database problem';
